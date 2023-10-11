@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f3f3f3;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        #app {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: brown;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+        }
+
+        #password {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: white;
+        }
+
+        label {
+            color: white;
+        }
+
+        #password-length {
+            font-weight: bold;
+            padding: 15px;
+            font-size: 15px;
+            border-radius: 20px;
+        }
+
+        button {
+            margin-top: 20px;
+            background: brown;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            border-radius: 20px;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+
+        @media(max-width: 500px) {
+            #app {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Password Generator</h1>
+        <label for="password-length">Password Length:</label>
+        <input type="number" id="password-length" value="12">
+        <button onclick="generatePassword()">Generate Password</button>
+        <div id="password"></div>
+    </div>
+
+    <script>
+        const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
+
+        function generatePassword() {
+            const passwordLength = parseInt(document.getElementById('password-length').value);
+            let password = "";
+
+            for (let i = 0; i < passwordLength; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset.charAt(randomIndex);
+            }
+
+            document.getElementById('password').textContent = password;
+        }
+    </script>
+</body>
+
+</html>
